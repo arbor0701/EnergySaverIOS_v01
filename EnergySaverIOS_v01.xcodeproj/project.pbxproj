@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D74CC29A2BF8484300255399 /* EnergySaverIOS_v01App.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74CC2992BF8484300255399 /* EnergySaverIOS_v01App.swift */; };
 		D74CC29C2BF8484300255399 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74CC29B2BF8484300255399 /* ContentView.swift */; };
-		D74CC29E2BF8484300255399 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74CC29D2BF8484300255399 /* Item.swift */; };
 		D74CC2A02BF8484400255399 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D74CC29F2BF8484400255399 /* Assets.xcassets */; };
 		D74CC2A32BF8484400255399 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D74CC2A22BF8484400255399 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -18,7 +17,6 @@
 		D74CC2962BF8484300255399 /* EnergySaverIOS_v01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnergySaverIOS_v01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D74CC2992BF8484300255399 /* EnergySaverIOS_v01App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergySaverIOS_v01App.swift; sourceTree = "<group>"; };
 		D74CC29B2BF8484300255399 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		D74CC29D2BF8484300255399 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		D74CC29F2BF8484400255399 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D74CC2A22BF8484400255399 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -55,7 +53,6 @@
 			children = (
 				D74CC2992BF8484300255399 /* EnergySaverIOS_v01App.swift */,
 				D74CC29B2BF8484300255399 /* ContentView.swift */,
-				D74CC29D2BF8484300255399 /* Item.swift */,
 				D74CC29F2BF8484400255399 /* Assets.xcassets */,
 				D74CC2A12BF8484400255399 /* Preview Content */,
 			);
@@ -141,7 +138,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D74CC29C2BF8484300255399 /* ContentView.swift in Sources */,
-				D74CC29E2BF8484300255399 /* Item.swift in Sources */,
 				D74CC29A2BF8484300255399 /* EnergySaverIOS_v01App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
