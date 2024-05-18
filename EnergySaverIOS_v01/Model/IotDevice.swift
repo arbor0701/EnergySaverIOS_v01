@@ -12,8 +12,7 @@ final class IotDevice
     var bleServiceUUID:String
     var bleCharacteristicRxUUID:String
     var bleCharacteristicTxUUID:String
-    
-    
+ 
     init(id:Int,name:String,data:[DataModel])
     {
         self.id = id

@@ -7,7 +7,6 @@ import CoreBluetooth
 @Observable
 class BLEconnecting: NSObject, CBPeripheralDelegate
 {
-    
     private var centralManager: CBCentralManager!
     private var peripherals:[CBPeripheral] = []
     private var blePeripheral:CBPeripheral!

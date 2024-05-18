@@ -13,6 +13,11 @@
 		D74CC2A32BF8484400255399 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D74CC2A22BF8484400255399 /* Preview Assets.xcassets */; };
 		D74CC2AB2BF8552600255399 /* IotDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74CC2A92BF8552600255399 /* IotDevice.swift */; };
 		D74CC2B32BF8556600255399 /* BLEconnecting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74CC2B12BF8556600255399 /* BLEconnecting.swift */; };
+		D74CC2B52BFC168D00255399 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74CC2B42BFC168D00255399 /* Indicator.swift */; };
+		D74CC2B72BFC169E00255399 /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74CC2B62BFC169E00255399 /* Switch.swift */; };
+		D74CC2B92BFC1F3800255399 /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74CC2B82BFC1F3800255399 /* Dashboard.swift */; };
+		D74CC2BB2BFC27C700255399 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74CC2BA2BFC27C700255399 /* Setting.swift */; };
+		D74CC2BD2BFC394E00255399 /* BluetoothConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74CC2BC2BFC394E00255399 /* BluetoothConnect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +28,11 @@
 		D74CC2A22BF8484400255399 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D74CC2A92BF8552600255399 /* IotDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IotDevice.swift; sourceTree = "<group>"; };
 		D74CC2B12BF8556600255399 /* BLEconnecting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEconnecting.swift; sourceTree = "<group>"; };
+		D74CC2B42BFC168D00255399 /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
+		D74CC2B62BFC169E00255399 /* Switch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
+		D74CC2B82BFC1F3800255399 /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
+		D74CC2BA2BFC27C700255399 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		D74CC2BC2BFC394E00255399 /* BluetoothConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothConnect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +95,9 @@
 		D74CC2AC2BF8554200255399 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				D74CC2B82BFC1F3800255399 /* Dashboard.swift */,
+				D74CC2B42BFC168D00255399 /* Indicator.swift */,
+				D74CC2B62BFC169E00255399 /* Switch.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -92,6 +105,8 @@
 		D74CC2AD2BF8554200255399 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				D74CC2BA2BFC27C700255399 /* Setting.swift */,
+				D74CC2BC2BFC394E00255399 /* BluetoothConnect.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -186,6 +201,11 @@
 				D74CC2AB2BF8552600255399 /* IotDevice.swift in Sources */,
 				D74CC2B32BF8556600255399 /* BLEconnecting.swift in Sources */,
 				D74CC29C2BF8484300255399 /* ContentView.swift in Sources */,
+				D74CC2B72BFC169E00255399 /* Switch.swift in Sources */,
+				D74CC2B52BFC168D00255399 /* Indicator.swift in Sources */,
+				D74CC2BD2BFC394E00255399 /* BluetoothConnect.swift in Sources */,
+				D74CC2B92BFC1F3800255399 /* Dashboard.swift in Sources */,
+				D74CC2BB2BFC27C700255399 /* Setting.swift in Sources */,
 				D74CC29A2BF8484300255399 /* EnergySaverIOS_v01App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

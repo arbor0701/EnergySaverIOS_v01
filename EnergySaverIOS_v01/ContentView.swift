@@ -10,15 +10,28 @@ import SwiftData
 
 struct ContentView: View {
     
-
     var body: some View {
-        Text("Content View")
+        
+        TabView{
+            Setting()
+                .tabItem{
+                    Image(systemName:"gearshape.fill")
+                    Text("Setting")
+                }
+            Dashboard()
+                .tabItem{
+                    Image(systemName:"thermometer.snowflake")
+                    Text("Dashboard")
+                }
+   
+   
+        }
+        
     }
 
-   
 }
 
 #Preview {
     ContentView()
-      
+    
 }
