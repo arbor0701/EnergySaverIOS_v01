@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Setting: View {
+struct DeviceRegister: View {
     var body: some View {
         VStack
         {
@@ -17,5 +17,5 @@ struct Setting: View {
 }
 
 #Preview {
-    Setting()
+    DeviceRegister()
 }
