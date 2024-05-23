@@ -19,8 +19,8 @@ class BLEconnecting: NSObject, CBPeripheralDelegate
     var BLE_Characteristic_uuid_Tx:CBUUID?
     var bleConnectionStatus :Bool = false
     var bleConnectionStrength:Int = 0
-    var iotDeviceInfo:IotDevice?
-    var sensorDataDecoded:IotDevice.DataModel?
+    var iotDevice:IotDevice?
+    var sensorDataDecoded:DataModel?
     
     override init()
     {
@@ -172,14 +172,14 @@ extension BLEconnecting:CBCentralManagerDelegate
         }
     }
     
-    func startScanning(_ iotDeviceInfo: IotDevice)->Void
+    func startScanning(_ iotDevice: IotDevice)->Void
     {
         print("start scanning")
-        self.iotDeviceInfo = iotDeviceInfo
-        self.BLE_Service_uuid = CBUUID(string: iotDeviceInfo.bleServiceUUID)
-        self.BLE_Characteristic_uuid_Rx = CBUUID(string: iotDeviceInfo.bleCharacteristicRxUUID)
-        self.BLE_Characteristic_uuid_Tx = CBUUID(string: iotDeviceInfo.bleCharacteristicTxUUID)
-        centralManager.scanForPeripherals(withServices: [CBUUID(string: iotDeviceInfo.bleServiceUUID)], options: nil)
+        self.iotDevice = iotDevice
+        self.BLE_Service_uuid = CBUUID(string: iotDevice.deviceInfo.bleServiceUUID)
+        self.BLE_Characteristic_uuid_Rx = CBUUID(string: iotDevice.deviceInfo.bleCharacteristicRxUUID)
+        self.BLE_Characteristic_uuid_Tx = CBUUID(string: iotDevice.deviceInfo.bleCharacteristicTxUUID)
+        centralManager.scanForPeripherals(withServices: [CBUUID(string: iotDevice.deviceInfo.bleServiceUUID)], options: nil)
     }
     
     func stopScanning()->Void
@@ -219,13 +219,13 @@ extension BLEconnecting:CBCentralManagerDelegate
     
     
     
-    func jsonConverter(jsonDataFromSensor: String)->IotDevice.DataModel
+    func jsonConverter(jsonDataFromSensor: String)->DataModel
     {
         let jsonData = jsonDataFromSensor.data(using: .utf8)!
         let decoder = JSONDecoder()
-        if let objectDataDecoded = try? decoder.decode(IotDevice.DataModel?.self, from: jsonData){return objectDataDecoded } else{
+        if let objectDataDecoded = try? decoder.decode(DataModel?.self, from: jsonData){return objectDataDecoded } else{
             
-            return IotDevice.DataModel(Temp:0.0, Humid: 0.0, SwitchState: 0)
+            return DataModel(Temp:0.0, Humid: 0.0, Switch1State: 0, Switch2State: 0)
         }
     }
     

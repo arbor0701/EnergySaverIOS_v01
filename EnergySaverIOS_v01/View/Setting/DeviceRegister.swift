@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DeviceRegister: View {
+    
     var body: some View {
         VStack
         {

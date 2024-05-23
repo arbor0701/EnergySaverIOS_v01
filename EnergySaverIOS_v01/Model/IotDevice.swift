@@ -5,33 +5,38 @@ import SwiftData
 @Model
 final class IotDevice
 {
-    var id: Int
-    var name:String
+
+    var deviceInfo: DeviceInfo
     var connected: Bool
     var data:[DataModel]
+    var updatedDate: Date = Date()
+ 
+    init(deviceInfo: DeviceInfo,data:[DataModel])
+    {
+        self.deviceInfo = deviceInfo
+        self.connected = false
+        self.data = data
+    }
+    
+
+}
+
+struct DeviceInfo:Codable,Hashable
+{
+    var id: Int
+    var name: String
     var bleServiceUUID:String
     var bleCharacteristicRxUUID:String
     var bleCharacteristicTxUUID:String
- 
-    init(id:Int,name:String,data:[DataModel])
-    {
-        self.id = id
-        self.name = name
-        self.connected = false
-        self.data = data
-        self.bleServiceUUID = ""
-        self.bleCharacteristicRxUUID = ""
-        self.bleCharacteristicTxUUID = ""
-    }
-    
-    struct DataModel:Codable,Hashable
-    {
-        var Temp: Float = 0.0
-        var Humid: Float = 0.0
-        var SwitchState: Int = 0
-    }
 }
 
+struct DataModel:Codable,Hashable
+{
+    var Temp: Float = 0.0
+    var Humid: Float = 0.0
+    var Switch1State: Int = 0
+    var Switch2State: Int = 0
+}
 
 
 //@Model

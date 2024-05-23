@@ -10,10 +10,25 @@ import SwiftData
 
 @main
 struct EnergySaverIOS_v01App: App {
-   
+    var sharedModelContainer:ModelContainer = {
+        let schema = Schema([IotDevice.self])
+        let modelConfig = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        
+        do {
+            let container = try ModelContainer(for: schema, configurations: modelConfig)
+            return container
+        } catch {
+            fatalError("Failed to create ModelContainer. Error: \(error)")
+        }
+        
+        
+    }()
+    
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .modelContainer(sharedModelContainer)
         }
 
     }

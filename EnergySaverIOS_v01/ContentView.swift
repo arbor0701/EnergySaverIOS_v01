@@ -10,10 +10,14 @@ import SwiftData
 
 struct ContentView: View {
     
+    @Environment(\.modelContext) private var modelContext
+    @Query private var iotDevices: [IotDevice]
+    
     var body: some View {
         
         TabView{
-            Setting()
+            
+            DeviceRegister()
                 .tabItem{
                     Image(systemName:"gearshape.fill")
                     Text("Setting")
@@ -23,12 +27,12 @@ struct ContentView: View {
                     Image(systemName:"thermometer.snowflake")
                     Text("Dashboard")
                 }
-   
-   
+            
+            
         }
         
     }
-
+    
 }
 
 #Preview {
