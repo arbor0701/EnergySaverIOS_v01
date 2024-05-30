@@ -1,0 +1,54 @@
+
+[
+    {
+        "id" :1001,
+        "deviceName": "MKR1010_01",
+        "bleServiceUUID": "19B10000-E8F2-537E-4F6C-D104768A1214",
+        "bleCharacteristicTxUUID": "19B10001-E8F2-537E-4F6C-D104768A1215",
+        "bleCharacteristicRxUUID": "19B10001-E8F2-537E-4F6C-D104768A1216",
+        "bleConnectionStatus" : false,
+        "httpConnectionStatus" : true,
+        "controlSwitch" : {"controlSwitch01": false,"controlSwitch02": false},
+        "sensorData" : {
+            "BME280_TEMP": 0.0,
+            "BME280_HUMID": 0.0,
+            "SGP30_CO2":  0.0,
+            "SGP30_TVOC": 0.0
+        },
+        "sensorDataHistory" : [
+            {
+                "BME280_TEMP": 0.0,
+                "BME280_HUMID": 0.0,
+                "SGP30_CO2":  0.0,
+                "SGP30_TVOC": 0.0
+            }]
+        
+    },
+    
+    {
+        "id" :2001,
+        "deviceName": "MKR1010_02",
+        "bleServiceUUID": "29B10000-E8F2-537E-4F6C-D104768A1214",
+        "bleCharacteristicTxUUID":"29B10001-E8F2-537E-4F6C-D104768A1215",
+        "bleCharacteristicRxUUID": "29B10001-E8F2-537E-4F6C-D104768A1216",
+        "bleConnectionStatus" : false,
+        "httpConnectionStatus" : true,
+        "controlSwitch" : {"controlSwitch01": false,"controlSwitch02": false},
+        "sensorData" : {
+
+            "BME280_TEMP": 0.0,
+            "BME280_HUMID": 0.0,
+            "SGP30_CO2":  0.0,
+            "SGP30_TVOC": 0.0
+        },
+        "sensorDataHistory" : [
+            {
+                "BME280_TEMP": 0.0,
+                "BME280_HUMID": 0.0,
+                "SGP30_CO2":  0.0,
+                "SGP30_TVOC": 0.0
+            }]
+        
+    }
+    
+]
