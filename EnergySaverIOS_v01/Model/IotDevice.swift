@@ -5,23 +5,20 @@ import SwiftData
 @Model
 final class IotDevice
 {
-
     var deviceInfo: DeviceInfo
     var connected: Bool
-    var data:[DataModel]
+    var data:[DataModel] = [DataModel()]
     var updatedDate: Date = Date()
- 
-    init(deviceInfo: DeviceInfo,data:[DataModel])
+    var serialNo: String = ""
+    
+    init(deviceInfo: DeviceInfo)
     {
         self.deviceInfo = deviceInfo
         self.connected = false
-        self.data = data
     }
-    
-
 }
 
-struct DeviceInfo:Codable,Hashable
+struct DeviceInfo:Codable,Hashable,Identifiable
 {
     var id: Int
     var name: String
@@ -32,8 +29,8 @@ struct DeviceInfo:Codable,Hashable
 
 struct DataModel:Codable,Hashable
 {
-    var Temp: Float = 0.0
-    var Humid: Float = 0.0
+    var SHT31_TEMP: Float = 0.0
+    var SHT31_HUMID: Float = 0.0
     var Switch1State: Int = 0
     var Switch2State: Int = 0
 }

@@ -1,9 +1,9 @@
 
 import SwiftUI
 import CoreBluetooth
-//ObservableObject
-//A type of object with a publisher that emits before the object has changed.
+import SwiftData
 
+//
 @Observable
 class BLEconnecting: NSObject, CBPeripheralDelegate
 {
@@ -17,11 +17,12 @@ class BLEconnecting: NSObject, CBPeripheralDelegate
     var BLE_Service_uuid:CBUUID = CBUUID(string: "0000ffe0-0000-1000-8000-00805f9b34fb")
     var BLE_Characteristic_uuid_Rx:CBUUID?
     var BLE_Characteristic_uuid_Tx:CBUUID?
-    var bleConnectionStatus :Bool = false
+    var bleConnectionStatus : String = "Disconnected"
     var bleConnectionStrength:Int = 0
-    var iotDevice:IotDevice?
-    var sensorDataDecoded:DataModel?
-    
+    var deviceInfo:DeviceInfo?
+    var sensorDataDecoded:DataModel = DataModel()
+
+
     override init()
     {
         super.init()
@@ -30,6 +31,7 @@ class BLEconnecting: NSObject, CBPeripheralDelegate
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber)
     {
+        print("Discoveredd")
         peripherals.append(peripheral)
         peripheralId.append(peripheral.name ?? peripheral.identifier.uuidString)
         print(peripheral.name ?? "no name")
@@ -44,15 +46,15 @@ class BLEconnecting: NSObject, CBPeripheralDelegate
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral)
     {
-        print("connectedd")
-        self.bleConnectionStatus = true
+        print("connected")
+        self.bleConnectionStatus = "connected"
         blePeripheral.discoverServices([BLE_Service_uuid])
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?)
     {
         print("Disconnected")
-        self.bleConnectionStatus  = false
+        self.bleConnectionStatus  = "disconnected"
     }
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?)
@@ -111,7 +113,7 @@ class BLEconnecting: NSObject, CBPeripheralDelegate
             }
         }
     }
-    
+ 
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         
         var characteristicASCIIValue = NSString()
@@ -128,8 +130,11 @@ class BLEconnecting: NSObject, CBPeripheralDelegate
         valueFromBLE = (characteristicASCIIValue as String)
         if valueFromBLE != nil
         {
-            print("Value Recieved: \((valueFromBLE!))")
+            print("Value Reciedddved: \((valueFromBLE!))")
             sensorDataDecoded=jsonConverter(jsonDataFromSensor: valueFromBLE!)
+            
+            print("Value Recieddddved: \((sensorDataDecoded.SHT31_TEMP))")
+            
         }
     }
     
@@ -152,18 +157,18 @@ extension BLEconnecting:CBCentralManagerDelegate
         {
         case .poweredOff:
             print("Is Powered Off.")
-            bleConnectionStatus = false
+            bleConnectionStatus = "Powered off"
         case .poweredOn:
             print("Is Powered On.")
         case .unsupported:
             print("Is Unsupported.")
-            bleConnectionStatus = false
+            bleConnectionStatus = "Unsupported"
         case .unauthorized:
             print("Is Unauthorized.")
-            bleConnectionStatus = false
+            bleConnectionStatus = "Unauthorized"
         case .unknown:
             print("Unknown")
-            bleConnectionStatus = false
+            bleConnectionStatus = "Unknown"
         case .resetting:
             print("Resetting")
             
@@ -175,7 +180,8 @@ extension BLEconnecting:CBCentralManagerDelegate
     func startScanning(_ iotDevice: IotDevice)->Void
     {
         print("start scanning")
-        self.iotDevice = iotDevice
+        print("\(iotDevice.deviceInfo.bleServiceUUID)")
+        self.deviceInfo = iotDevice.deviceInfo
         self.BLE_Service_uuid = CBUUID(string: iotDevice.deviceInfo.bleServiceUUID)
         self.BLE_Characteristic_uuid_Rx = CBUUID(string: iotDevice.deviceInfo.bleCharacteristicRxUUID)
         self.BLE_Characteristic_uuid_Tx = CBUUID(string: iotDevice.deviceInfo.bleCharacteristicTxUUID)
@@ -223,11 +229,14 @@ extension BLEconnecting:CBCentralManagerDelegate
     {
         let jsonData = jsonDataFromSensor.data(using: .utf8)!
         let decoder = JSONDecoder()
+        print("jsonConverter\(jsonData)")
         if let objectDataDecoded = try? decoder.decode(DataModel?.self, from: jsonData){return objectDataDecoded } else{
             
-            return DataModel(Temp:0.0, Humid: 0.0, Switch1State: 0, Switch2State: 0)
+            return DataModel(SHT31_TEMP:1.1, SHT31_HUMID: 1.1, Switch1State: 0, Switch2State: 0)
         }
     }
+    
+    
     
     
     
@@ -235,3 +244,12 @@ extension BLEconnecting:CBCentralManagerDelegate
 
 
 
+class dataToSwiftData
+{
+    var data = [DataModel]()
+    
+    func sendDataToSwiftData(data: DataModel)
+    {
+        self.data.append(data)
+    }
+}

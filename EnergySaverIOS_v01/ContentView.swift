@@ -37,5 +37,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-    
+        .modelContainer(for:IotDevice.self, inMemory: true)
 }

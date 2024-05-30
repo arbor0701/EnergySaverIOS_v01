@@ -1,23 +1,27 @@
-//
-//  Dashboard.swift
-//  EnergySaverIOS_v01
-//
-//  Created by machine01 on 5/21/24.
-//
 
 import SwiftUI
+import SwiftData
+import CoreBluetooth
+
 let screenWidth = UIScreen.main.bounds.width
 struct Dashboard: View {
-
+    @Environment(\.modelContext) private var modelContext
+    @Query(sort:[SortDescriptor(\IotDevice.deviceInfo.id)])  var iotDevices: [IotDevice]
+    
     var body: some View {
         VStack{
-            Indicator()
-            Switch()
+            ForEach(iotDevices)
+            {
+                iotDevice in
+                
+                let peripheralSelected = BLEconnecting()
+                BluetoothConnect(iotDevice: iotDevice, peripheralSelected: peripheralSelected)
+                Indicator(iotDevice: iotDevice, peripheralSelected: peripheralSelected)
+            }
         }
-
     }
 }
 
 #Preview {
-    Dashboard()
+    Dashboard().modelContainer(for:IotDevice.self, inMemory: true)
 }
