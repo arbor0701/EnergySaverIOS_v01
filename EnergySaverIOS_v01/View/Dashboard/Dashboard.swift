@@ -4,6 +4,8 @@ import SwiftData
 import CoreBluetooth
 
 let screenWidth = UIScreen.main.bounds.width
+let screenHeight = UIScreen.main.bounds.height
+
 struct Dashboard: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort:[SortDescriptor(\IotDevice.deviceInfo.id)])  var iotDevices: [IotDevice]

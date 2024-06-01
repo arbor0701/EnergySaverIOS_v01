@@ -10,12 +10,16 @@ final class IotDevice
     var data:[DataModel] = [DataModel()]
     var updatedDate: Date = Date()
     var serialNo: String = ""
+    var tempSet: Float = 0.0
+    var humidSet: Float = 0.0
+//    let peripheralSelected:BLEconnecting = BLEconnecting()
     
     init(deviceInfo: DeviceInfo)
     {
         self.deviceInfo = deviceInfo
         self.connected = false
     }
+    
 }
 
 struct DeviceInfo:Codable,Hashable,Identifiable

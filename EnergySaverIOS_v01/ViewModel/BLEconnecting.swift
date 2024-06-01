@@ -21,8 +21,8 @@ class BLEconnecting: NSObject, CBPeripheralDelegate
     var bleConnectionStrength:Int = 0
     var deviceInfo:DeviceInfo?
     var sensorDataDecoded:DataModel = DataModel()
-
-
+   
+    
     override init()
     {
         super.init()
@@ -113,7 +113,8 @@ class BLEconnecting: NSObject, CBPeripheralDelegate
             }
         }
     }
- 
+    
+    
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         
         var characteristicASCIIValue = NSString()
@@ -130,13 +131,20 @@ class BLEconnecting: NSObject, CBPeripheralDelegate
         valueFromBLE = (characteristicASCIIValue as String)
         if valueFromBLE != nil
         {
-            print("Value Reciedddved: \((valueFromBLE!))")
+            
             sensorDataDecoded=jsonConverter(jsonDataFromSensor: valueFromBLE!)
+            
+            
+            
+            print("Value Reciedddved: \((valueFromBLE!))")
+            
             
             print("Value Recieddddved: \((sensorDataDecoded.SHT31_TEMP))")
             
         }
     }
+    
+    
     
     func writeValue(data: String) {
         guard blePeripheral != nil else { return }

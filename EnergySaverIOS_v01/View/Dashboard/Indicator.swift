@@ -1,9 +1,3 @@
-//
-//  Indicator.swift
-//  EnergySaverIOS_v01
-//
-//  Created by machine01 on 5/21/24.
-//
 
 import SwiftUI
 import SwiftData
@@ -12,12 +6,15 @@ struct Indicator: View {
 
     @Bindable var iotDevice: IotDevice
     @Bindable var peripheralSelected:BLEconnecting
-
+    @State private var settingTemp: CGFloat = 0.0
+    @State private var settingHumid: CGFloat = 0.0
+    
     var body: some View {
         
         @State var dataFromBle = peripheralSelected.sensorDataDecoded
 
         HStack{
+
             ZStack()
             {
                 RoundedRectangle(cornerSize: CGSize(width: 8, height: 8))
@@ -30,37 +27,16 @@ struct Indicator: View {
                         .font(.body)
                         .foregroundColor(.white)
                     Text(String(dataFromBle.SHT31_TEMP))
-                        .font(.title)
-                        .foregroundColor(.white)
-
-                    Text("Celsius")
-                        .font(.caption)
-                        .foregroundColor(.white)
-                }
-            }
-
-            ZStack()
-            {
-                RoundedRectangle(cornerSize: CGSize(width: 8, height: 8))
-                    .fill(Color.blue)
-                    .frame(width:(screenWidth/5), height: 100)
-                    .shadow(radius: 5)
-                
-                VStack{
-                    Text("TempSet")
                         .font(.body)
                         .foregroundColor(.white)
-                    Text(String(dataFromBle.SHT31_TEMP))
-                        .font(.title)
-                        .foregroundColor(.white)
 
                     Text("Celsius")
                         .font(.caption)
                         .foregroundColor(.white)
                 }
             }
-         
-            
+
+            SliderV01( symbol:"°", progressRange: 30,peripheralSelected: peripheralSelected, settingValue: $settingTemp)
             ZStack()
             {
                 RoundedRectangle(cornerSize: CGSize(width: 8, height: 8))
@@ -73,27 +49,7 @@ struct Indicator: View {
                         .foregroundColor(.white)
                     
                     Text(String(dataFromBle.SHT31_HUMID))
-                        .font(.title)
-                        .foregroundColor(.white)
-                    
-                    Text("%")
-                        .font(.caption)
-                        .foregroundColor(.white)
-                }
-            }
-            ZStack()
-            {
-                RoundedRectangle(cornerSize: CGSize(width: 8, height: 8))
-                    .fill(Color.blue)
-                    .frame(width:(screenWidth/5), height: 100)
-                    .shadow(radius: 5)
-                VStack{
-                    Text("HumidSet")
                         .font(.body)
-                        .foregroundColor(.white)
-                    
-                    Text(String(dataFromBle.SHT31_HUMID))
-                        .font(.title)
                         .foregroundColor(.white)
                     
                     Text("%")
@@ -102,9 +58,29 @@ struct Indicator: View {
                 }
             }
 
+            SliderV01(symbol:"%", progressRange: 100,peripheralSelected: peripheralSelected ,settingValue: $settingHumid)
+
+        }.onChange(of:settingTemp){
+            peripheralSelected.writeValue(data: "{ \"Temp\":\(Int(settingTemp)) , \"Humid\":\(Int(settingHumid))}")
         }
+        .onChange(of:settingHumid){
+            peripheralSelected.writeValue(data: "{ \"Temp\":\(Int(settingTemp)) , \"Humid\":\(Int(settingHumid))}")
+        }
+  
    
     }
+    func fetchData(for query: CGFloat) async throws {
+           // Simulate a network or database query delay
+//           try await Task.sleep(nanoseconds: 1_000_000_000) // 1 second delay
+           
+           // Simulated fetched data
+//           let fetchedData = ["Item 1", "Item 2", "Item 3"]
+           
+           // Update data on the main thread
+           await MainActor.run {
+               iotDevice.tempSet = Float(query)
+           }
+       }
     
 }
 

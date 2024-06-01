@@ -18,6 +18,7 @@
 		D74CC2B92BFC1F3800255399 /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74CC2B82BFC1F3800255399 /* Dashboard.swift */; };
 		D74CC2BB2BFC27C700255399 /* DeviceRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74CC2BA2BFC27C700255399 /* DeviceRegister.swift */; };
 		D74CC2BD2BFC394E00255399 /* DeviceDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74CC2BC2BFC394E00255399 /* DeviceDetail.swift */; };
+		D769F1B42C080A9100AAF668 /* SliderV01.swift in Sources */ = {isa = PBXBuildFile; fileRef = D769F1B32C080A9100AAF668 /* SliderV01.swift */; };
 		D76EB1242BFECFDA00BE335E /* DeviceRegisterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76EB1232BFECFDA00BE335E /* DeviceRegisterable.swift */; };
 		D76EB1262BFED21F00BE335E /* deviceInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = D76EB1252BFED21F00BE335E /* deviceInfo.json */; };
 		D7A0AE1F2C041A3F0030B33E /* BluetoothConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A0AE1E2C041A3F0030B33E /* BluetoothConnect.swift */; };
@@ -37,6 +38,7 @@
 		D74CC2BA2BFC27C700255399 /* DeviceRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegister.swift; sourceTree = "<group>"; };
 		D74CC2BC2BFC394E00255399 /* DeviceDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDetail.swift; sourceTree = "<group>"; };
 		D769F1B12C070F3600AAF668 /* EnergySaverIOS_v01.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EnergySaverIOS_v01.entitlements; sourceTree = "<group>"; };
+		D769F1B32C080A9100AAF668 /* SliderV01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderV01.swift; sourceTree = "<group>"; };
 		D76EB1232BFECFDA00BE335E /* DeviceRegisterable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegisterable.swift; sourceTree = "<group>"; };
 		D76EB1252BFED21F00BE335E /* deviceInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = deviceInfo.json; sourceTree = "<group>"; };
 		D7A0AE1E2C041A3F0030B33E /* BluetoothConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothConnect.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				D74CC2AA2BF8552600255399 /* Model */,
 				D74CC2AF2BF8554200255399 /* View */,
 				D74CC2B22BF8556600255399 /* ViewModel */,
+				D769F1B22C080A6100AAF668 /* Components */,
 				D74CC29F2BF8484400255399 /* Assets.xcassets */,
 				D76EB1252BFED21F00BE335E /* deviceInfo.json */,
 				D74CC2A12BF8484400255399 /* Preview Content */,
@@ -139,6 +142,14 @@
 				D76EB1232BFECFDA00BE335E /* DeviceRegisterable.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D769F1B22C080A6100AAF668 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				D769F1B32C080A9100AAF668 /* SliderV01.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,6 +227,7 @@
 				D74CC2B32BF8556600255399 /* BLEconnecting.swift in Sources */,
 				D74CC29C2BF8484300255399 /* ContentView.swift in Sources */,
 				D74CC2B72BFC169E00255399 /* Switch.swift in Sources */,
+				D769F1B42C080A9100AAF668 /* SliderV01.swift in Sources */,
 				D74CC2B52BFC168D00255399 /* Indicator.swift in Sources */,
 				D7A0AE1F2C041A3F0030B33E /* BluetoothConnect.swift in Sources */,
 				D74CC2BD2BFC394E00255399 /* DeviceDetail.swift in Sources */,
